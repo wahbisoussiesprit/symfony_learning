@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Search by Reference{% endblock %}
+
+{% block body %}
+    <h1>Search by Reference</h1>
+
+    <form method="post" action="{{ path('app_search_book') }}">
+        <div class="form-group">
+            <label for="ref">Reference:</label>
+            <input type="text" id="ref" name="ref" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <a href="{{ path('app_book') }}">Back to Books</a>
+{% endblock %}

@@ -1,0 +1,49 @@
+{#
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des auteurs</title>
+</head>
+<body>
+    <h1>Liste des auteurs :</h1>
+    <ul>
+        {% for author in authors %}
+            <li>
+                <h2>{{ author.username }}</h2>
+                <img src="{{ asset(author.picture) }}" alt="{{ author.username }}" width="100">
+                <p>Email : {{ author.email }}</p>
+                <p>Nombre de livres : {{ author.nb_books }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    <p>Nombre d'auteurs : {{ authors|length }}</p>
+    {% set totalBooks = 0 %}
+    {% for author in authors %}
+        {% set totalBooks = totalBooks + author.nb_books %}
+    {% endfor %}
+    <p>Nombre total de livres : {{ totalBooks }}</p>
+</body>
+</html>
+#}
+
+<table style="border-collapse: collapse; width: 50%; margin: 0 auto; border: 1px solid #000;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #000; padding: 8px;">Username</th>
+            <th style="border: 1px solid #000; padding: 8px;">Email</th>
+            <th style="border: 1px solid #000; padding: 8px;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for author in authors %}
+            <tr>
+                <td style="border: 1px solid #000; padding: 8px;">{{ author.getUsername() }}</td>
+                <td style="border: 1px solid #000; padding: 8px;">{{ author.getEmail() }}</td>
+                <td style="border: 1px solid #000; padding: 8px;">
+                    <a href="{{ path('app_edit_author', {'id': author.getId()}) }}">Edit</a>
+                    <a href="{{ path('app_delete_author', {'id': author.id}) }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+{# templates/joueur/afficher.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du Joueur{% endblock %}
+
+{% block body %}
+    <h1>Détails du Joueur</h1>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <td>{{ joueur.id }}</td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td>{{ joueur.nom }}</td>
+        </tr>
+        <tr>
+            <th>Rôle</th>
+            <td>{{ joueur.role }}</td>
+        </tr>
+    </table>
+
+    <a href="{{ path('liste_joueurs') }}" class="btn btn-primary">Retour à la liste des joueurs</a>
+
+    
+    <a href="{{ path('supprimer_joueur', {'id': joueur.id}) }}" class="btn btn-danger">Supprimer</a>
+</body>
+{% endblock %}

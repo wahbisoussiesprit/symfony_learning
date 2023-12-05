@@ -1,0 +1,11 @@
+{# templates/book/show_book.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Book Details{% endblock %}
+
+{% block body %}
+    <h1>{{ book.title }}</h1>
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Publication Date:</strong> {{ book.publicationDate|date('Y-m-d') }}</p>
+    <a href="{{ path('app_published_books') }}">Back to Published Books</a>
+{% endblock %}

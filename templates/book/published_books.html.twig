@@ -1,0 +1,48 @@
+{# templates/book/published_books.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Published Books{% endblock %}
+
+{% block body %}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+<h1>Published Books</h1>
+
+{% if publishedBooks is empty %}
+    <p>No Books found</p>
+{% else %}
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Published</th>
+                <th>Category</th>
+                <th>Publication Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in publishedBooks %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.published ? 'Yes' : 'No' }}</td>
+                    <td>{{ book.category }}</td>
+                    <td>{{ book.publicationDate|date('Y-m-d') }}</td>
+                    <td><a href="{{ path('app_edit_book', {'id': book.id}) }}">Edit</a></td>
+                    <td><a href="{{ path('app_delete_book', {'id': book.id}) }}">Delete</a></td>
+                    <td><a href="{{ path('app_show_book', {'id': book.id}) }}">Show</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>Number of Published Books: {{ publishedBooks|length }}</p>
+{% endif %}
+<a href="{{ path('app_book') }}">Back to Books</a>
+{% endblock %}

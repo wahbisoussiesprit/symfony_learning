@@ -1,0 +1,34 @@
+{# templates/joueur/liste.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Joueurs{% endblock %}
+
+{% block body %}
+    <h1>Liste des Joueurs</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Rôle</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for joueur in joueurs %}
+                <tr>
+                    <td>{{ joueur.id }}</td>
+                    <td>{{ joueur.nom }}</td>
+                    <td>{{ joueur.role }}</td>
+                    <td>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+     <a href="{{ path('supprimer_gardiens') }}" class="btn btn-danger">Supprimer</a>
+
+    <a href="{{ path('app_joueur') }}" class="btn btn-primary">Retour à la page d'accueil</a>
+</body>
+{% endblock %}

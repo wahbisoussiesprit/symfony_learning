@@ -1,0 +1,28 @@
+{# templates/book/edit_book.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Book{% endblock %}
+
+{% block body %}
+    <h1>Edit Book</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.ref, {'label': 'Reference'}) }}
+    {{ form_row(form.title, {'label': 'Title'}) }}
+    {{ form_row(form.category, {'label': 'Category'}) }}
+    {{ form_row(form.publicationDate, {'label': 'Publication Date'}) }}
+    {{ form_row(form.published, {'label': 'Published'}) }}
+    
+    {# Display the author select field #}
+    <div class="form-group">
+        {{ form_label(form.author, 'Author') }}
+        {{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Book</button>
+
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_book') }}">Back to Books</a>
+{% endblock %}
